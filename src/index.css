@@ -1,0 +1,13 @@
+.card {
+    margin-bottom: 1rem;
+  }
+  
+  .delete-person {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  input[readonly] {
+    background-color: #f8f9fa;
+    cursor: default;
+  }
