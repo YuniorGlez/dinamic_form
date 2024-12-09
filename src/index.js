@@ -23,6 +23,16 @@ function addUser() {
     return;
   }
 
+  storeUserInMemory(nameValue, emailValue, ageValue);
+  printUsers();
+  resetForm();
+}
+
+function printUsers() {
+  // TODO
+}
+
+function storeUserInMemory(nameValue, emailValue, ageValue) {
   const user = {
     name: nameValue,
     email: emailValue,
@@ -30,8 +40,12 @@ function addUser() {
   };
 
   users.push(user);
+}
 
-  console.log(`Tenemos ${users.length} usuarios`);
+function resetForm() {
+  name.value = "";
+  email.value = "";
+  age.value = "";
 }
 
 function validateName(name) {
@@ -39,8 +53,8 @@ function validateName(name) {
 }
 
 function validateEmail(email) {
-  return true;
+  return (email && email.length > 4 && email.includes("@"));
 }
 function validateAge(age) {
-  return true;
+  return (age >= 1 && age <= 150);
 }
