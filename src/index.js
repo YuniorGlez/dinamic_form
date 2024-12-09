@@ -16,9 +16,61 @@ document.querySelector(".container").appendChild(peopleList);
 
 // Función para validar los inputs
 function validateInputs() {
-  return true;
+  let isValid = true;
+  const errors = [];
+
+  // Validar nombre (no vacío y al menos 3 caracteres)
+  if (!nameInput.value || nameInput.value.length < 3) {
+    nameInput.classList.add("is-invalid");
+    errors.push("El nombre debe tener al menos 3 caracteres");
+    isValid = false;
+  } else {
+    nameInput.classList.remove("is-invalid");
 }
 
+  // Validar email (formato válido y no duplicado)
+  if (!emailInput.value || !emailInput.value.includes("@")) {
+    emailInput.classList.add("is-invalid");
+    errors.push("El email no es válido");
+    isValid = false;
+  } else if (people.some(person => person.email === emailInput.value)) {
+    emailInput.classList.add("is-invalid");
+    errors.push("Este email ya está registrado");
+    isValid = false;
+  } else {
+    emailInput.classList.remove("is-invalid");
+  }
+
+  // Validar edad (entre 0 y 120)
+  const age = Number(ageInput.value);
+  if (!age || age < 0 || age > 120) {
+    ageInput.classList.add("is-invalid");
+    errors.push("La edad debe estar entre 0 y 120 años");
+    isValid = false;
+  } else {
+    ageInput.classList.remove("is-invalid");
+  }
+
+  // Mostrar errores si existen
+  if (errors.length > 0) {
+    showError(errors.join("<br>"));
+  } else {
+    hideError();
+  }
+
+  return isValid;
+}
+
+// Función para mostrar errores
+function showError(message) {
+  errorContainer.innerHTML = message;
+  errorContainer.classList.remove("d-none");
+}
+
+// Función para ocultar errores
+function hideError() {
+  errorContainer.classList.add("d-none");
+}
 
 // Event Listeners
 addButton.addEventListener("click", () => {
