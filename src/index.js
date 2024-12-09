@@ -1,6 +1,18 @@
 // Array para almacenar las personas
 const people = [];
 
+// Referencias a elementos del DOM
+const form = document.querySelector("form");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const ageInput = document.getElementById("age");
+const addButton = document.getElementById("addButton");
+const errorContainer = document.getElementById("errorContainer");
+
+// Crear contenedor para la lista de personas
+const peopleList = document.createElement("div");
+peopleList.className = "people-list mt-4";
+document.querySelector(".container").appendChild(peopleList);
 
 function deletePerson(emailToDelete) {
   const index = people.findIndex(p => p.email === emailToDelete);

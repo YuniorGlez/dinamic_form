@@ -24,15 +24,16 @@
     <div class="card-body">
       <form>
         <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Nombre">
+          <input id="name" type="text" class="form-control" placeholder="Nombre">
         </div>
         <div class="mb-3">
-          <input type="email" class="form-control" placeholder="Correo">
+          <input id="email" type="email" class="form-control" placeholder="Correo">
         </div>
         <div class="mb-3">
-          <input type="number" class="form-control" placeholder="Edad">
+          <input id="age" type="number" class="form-control" placeholder="Edad">
         </div>
-        <button type="button" class="btn btn-primary">Añadir nuevo</button>
+        <button id="addButton" type="button" class="btn btn-primary">Añadir nuevo</button>
+        <div id="errorContainer" class="alert alert-danger d-none mt-3"></div>
       </form>
     </div>
   </div>
