@@ -8,7 +8,9 @@ let users = [];
 
 addButton.addEventListener("click", addUser);
 
-function addUser() {
+function addUser(event) {
+  console.log(event);
+
   const nameValue = name.value.trim();
   const emailValue = email.value.trim().toLowerCase();
   const ageValue = parseInt(age.value);
@@ -39,6 +41,12 @@ function printUsers() {
   users.forEach(user => {
     usersList.innerHTML += generateHTMLForThisUser(user);
   });
+
+  const removeButtons = document.querySelectorAll("#remove-button");
+
+  removeButtons.forEach(button => {
+    button.addEventListener("click", deleteThisUserFromUsers);
+  });
 }
 
 function generateHTMLForThisUser(user) {
@@ -54,14 +62,14 @@ function generateHTMLForThisUser(user) {
                 <div class="mb-3">
                 <input id="age" value="${user.age}" readonly type="number" class="form-control">
                 </div>
-                <button type="button" onClick="deleteThisUserFromUsers('${user.email}')" class="btn btn-danger">Bórrame</button>
+                <button data-email="${user.email}" id="remove-button" type="button" class="btn btn-danger">Bórrame</button>
             </div>
         </div>
     `;
 }
 
-function deleteThisUserFromUsers(email) {
-  users = users.filter(user => user.email !== email);
+function deleteThisUserFromUsers(event) {
+  users = users.filter(u => u.email !== event.target.getAttribute("data-email"));
   printUsers();
 }
 
