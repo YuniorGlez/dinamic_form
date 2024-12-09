@@ -14,12 +14,18 @@ function addUser() {
   const ageValue = parseInt(age.value);
 
   if (!validateName(nameValue)) {
+    console.log("Tienes un error en el name");
+
     return;
   }
   if (!validateEmail(emailValue)) {
+    console.log("Tienes un error en el email");
+
     return;
   }
   if (!validateAge(ageValue)) {
+    console.log("Tienes un error en el age");
+
     return;
   }
 
@@ -29,7 +35,12 @@ function addUser() {
 }
 
 function printUsers() {
-  // TODO
+  usersList.innerHTML = "";
+  users.forEach(user => {
+    usersList.innerHTML += generateHTMLForThisUser(user);
+  });
+}
+
 }
 
 function storeUserInMemory(nameValue, emailValue, ageValue) {
