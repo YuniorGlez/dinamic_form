@@ -14,6 +14,27 @@ const peopleList = document.createElement("div");
 peopleList.className = "people-list mt-4";
 document.querySelector(".container").appendChild(peopleList);
 
+// Función para validar los inputs
+function validateInputs() {
+  return true;
+}
+
+
+// Event Listeners
+addButton.addEventListener("click", () => {
+  if (validateInputs()) {
+    const newPerson = {
+      name: nameInput.value,
+      email: emailInput.value,
+      age: Number(ageInput.value)
+    };
+    people.push(newPerson);
+    updatePeopleList();
+    form.reset();
+  }
+});
+
+
 function deletePerson(emailToDelete) {
   const index = people.findIndex(p => p.email === emailToDelete);
   if (index !== -1) {
