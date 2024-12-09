@@ -4,7 +4,7 @@ const age = document.getElementById("age");
 const addButton = document.getElementById("add-button");
 const usersList = document.getElementById("users-list");
 
-const users = [];
+let users = [];
 
 addButton.addEventListener("click", addUser);
 
@@ -41,6 +41,28 @@ function printUsers() {
   });
 }
 
+function generateHTMLForThisUser(user) {
+  return `
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-3">
+                <input id="name" value="${user.name}" readonly type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                <input id="email" value="${user.email}" readonly type="email" class="form-control">
+                </div>
+                <div class="mb-3">
+                <input id="age" value="${user.age}" readonly type="number" class="form-control">
+                </div>
+                <button type="button" onClick="deleteThisUserFromUsers('${user.email}')" class="btn btn-danger">Bórrame</button>
+            </div>
+        </div>
+    `;
+}
+
+function deleteThisUserFromUsers(email) {
+  users = users.filter(user => user.email !== email);
+  printUsers();
 }
 
 function storeUserInMemory(nameValue, emailValue, ageValue) {
