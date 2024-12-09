@@ -1,13 +1,25 @@
 .card {
     margin-bottom: 1rem;
-  }
-  
-  .delete-person {
+    max-width: 280px;
+}
+
+.delete-person {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
-  }
-  
-  input[readonly] {
+}
+
+input[readonly] {
     background-color: #f8f9fa;
     cursor: default;
-  }
+}
+
+.container{
+    display: flex;
+    gap: 20px
+}
+
+#peopleContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
