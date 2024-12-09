@@ -9,11 +9,6 @@ const ageInput = document.getElementById("age");
 const addButton = document.getElementById("addButton");
 const errorContainer = document.getElementById("errorContainer");
 
-// Crear contenedor para la lista de personas
-const peopleList = document.createElement("div");
-peopleList.className = "people-list mt-4";
-document.querySelector(".container").appendChild(peopleList);
-
 // Función para validar los inputs
 function validateInputs() {
   let isValid = true;
@@ -26,7 +21,7 @@ function validateInputs() {
     isValid = false;
   } else {
     nameInput.classList.remove("is-invalid");
-}
+  }
 
   // Validar email (formato válido y no duplicado)
   if (!emailInput.value || !emailInput.value.includes("@")) {
@@ -85,7 +80,6 @@ addButton.addEventListener("click", () => {
     form.reset();
   }
 });
-
 
 function deletePerson(emailToDelete) {
   const index = people.findIndex(p => p.email === emailToDelete);
